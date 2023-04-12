@@ -46,7 +46,7 @@ const Home = () => {
 
 			<div>
 				<p>
-					<span>{showInfo ? day : '00'}</span> years
+					<span>{showInfo ? year : '00'}</span> years
 				</p>
 				<p>
 					<span>{showInfo ? day : '00'}</span> months
@@ -61,16 +61,37 @@ const Home = () => {
 
 const changeDay = (value, setDay) => {
 	setDay(value);
+	newDate(Number(setDay));
 };
 
 const changeMonth = (value, setMonth) => {
 	setMonth(value);
+	newDate(setMonth);
 };
 
 const changeYear = (value, setYear) => {
 	setYear(value);
+	newDate(setYear);
 };
 
-const newDate = (setDay, setMonth, setYear) => {};
+const newDate = (setDay, setMonth, setYear) => {
+	const actualDate = new Date();
+	const actualYear = Number(actualDate.getFullYear());
+	const actualMonth = Number(actualDate.getMonth() + 1);
+	const actualDay = Number(actualDate.getDate() + 1);
+	const month = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 
+	if (setDay > actualDay) {
+		actualDay = actualDay + month[actualMonth - 1];
+		actualMonth = actualMonth - 1;
+	} else if (setMonth > actualMonth) {
+		actualMonth = actualMonth + 12;
+		actualYear = actualYear - 1;
+	}
+	let d = actualDay - setDay;
+	let m = actualMonth - setMonth;
+	let y = actualYear - setYear;
+
+	return d, m, y;
+};
 export default Home;
