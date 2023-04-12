@@ -8,7 +8,7 @@ const HomeContainer = styled.div`
 	margin-right: auto;
 	margin-left: auto;
 	border-radius: 24px 24px 100px 24px;
-	padding: 48px 24px;
+	padding: 38px 14px;
 	background-color: white;
 `;
 const FormContainer = styled.div`
@@ -34,5 +34,21 @@ const StyledInput = styled.input`
 	border-radius: 8px;
 	font-size: 2rem;
 `;
-
-export { HomeContainer, FormContainer, StyledForm, StyledInput, StyledLabel };
+const StyledAge = styled.p`
+	font-weight: 800;
+	font-size: 56px;
+	letter-spacing: -0.02em;
+`;
+const StyledSpan = styled.span`
+	color: #854dff;
+	font-style: italic;
+`;
+export {
+	HomeContainer,
+	FormContainer,
+	StyledForm,
+	StyledInput,
+	StyledLabel,
+	StyledAge,
+	StyledSpan
+};
